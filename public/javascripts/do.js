@@ -146,12 +146,12 @@ jQuery(function($){
 		},
 
 		list: function(){
-			socket.on('all', function(data){
+			socket.on('all', function(data) {
 				$('#todo-list').html('');
-				for(var i = 0; i< data.length; i++){
-					if(data[i].complete){
+				for (var i = 0; i< data.length; i++) {
+					if (parseInt(data[i].complete)) {
 						$('#todo-list').append('<li id="'+data[i]._id+'" class="completed"><div class="view"><input data-todoId="'+data[i]._id+'" class="toggle" type="checkbox" checked><label>'+data[i].title+'</label><button data-todoId="'+data[i]._id+'" class="destroy"></button></div><input data-todoId="'+data[i]._id+'" class="edit" value="'+data[i].title+'"></li>');
-					}else{
+					} else {
 						$('#todo-list').append('<li id="'+data[i]._id+'"><div class="view"><input data-todoId="'+data[i]._id+'" class="toggle" type="checkbox"><label>'+data[i].title+'</label><button data-todoId="'+data[i]._id+'" class="destroy"></button></div><input data-todoId="'+data[i]._id+'" class="edit" value="'+data[i].title+'"></li>');
 					}
 				}
